@@ -7,18 +7,37 @@ import edu.princeton.cs.algs4.WeightedQuickUnionUF;
  */
 public class Percolation {
 
+    /**
+     * Dimension.
+     */
     private int dimension = 0;
+
+    /**
+     * Virtual top site.
+     */
     private int virtualTop;
+
+    /**
+     * Virtual bottom site.
+     */
     private int virtualBottom;
+
+    /**
+     * Grid.
+     */
     private boolean[] grid;
+
+    /**
+     * WeightedQuickUnionUF.
+     */
     private WeightedQuickUnionUF weightedQuickUnionUF;
 
     /**
-     * Create dimension-by-dimension grid, with all sites blocked
+     * Create dimension-by-dimension grid, with all sites blocked.
      * Define Virtual Top and Virtual Bottom
      * @param n - Grid Dimension
      */
-    public Percolation(int n) {
+    public Percolation(final int n) {
         if (n <= 0) {
             throw new IllegalArgumentException();
         }
@@ -31,7 +50,7 @@ public class Percolation {
     }
 
     /**
-     * Open site (row i, column j) if it is not open already
+     * Open site (row i, column j) if it is not open already.
      * @param i - row (from 1 to dimension)
      * @param j - column (from 1 to dimension)
      */
@@ -102,11 +121,13 @@ public class Percolation {
      * @return is full
      */
     public boolean isFull(int i, int j) {
-        return weightedQuickUnionUF.connected(virtualTop, getIndexByRowColumn(i, j));
+        return weightedQuickUnionUF.connected(
+                virtualTop, getIndexByRowColumn(i, j)
+        );
     }
 
     /**
-     * does the system percolate?
+     * Does the system percolate?
      * @return is percolates
      */
     public boolean percolates() {
@@ -114,7 +135,7 @@ public class Percolation {
     }
 
     /**
-     * Get index by row and column
+     * Get index by row and column.
      * @param i - row
      * @param j - column
      * @return index
